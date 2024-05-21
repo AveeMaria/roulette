@@ -1,0 +1,82 @@
+/*
+html {
+  background-image: url("bg.png");
+  background-color: #cccccc;
+  background-repeat: no-repeat;
+    background-position: center;
+  background-size: cover;
+}
+*/
+
+header {
+	background-color: #aaaaaa;
+}
+
+body {
+	background-color: #bbbbbb;
+}
+
+button {
+	border-color: #777777;
+}
+
+.black {
+	width: 30px;
+	height: 30px;
+	margin: 2px;
+	background-color: black;
+	color: white;
+}
+
+.red {
+	width: 30px;
+	height: 30px;
+	margin: 2px;
+	background-color: red;
+	color: white;
+}
+
+.bets {
+	background-color: #0aab28;
+	color: white;
+}
+
+#MANQUE, #ROUGE, #IMPAIR {
+	margin: 2px;
+	margin-right: 0px;
+	width: 70px;
+	height: 30px;
+}
+
+#NOIR, #PAIR, #PASSE {
+	margin: 2px;
+	margin-left: 0px;
+	width: 70px;
+	height: 30px;
+}
+
+#row1, #row2, #row3 {
+	margin: 2px;
+	width: 30px;
+	height: 30px;
+}
+
+
+#D1, #D2, #D3 {
+	margin: 2px;
+	width: 144px;
+	height: 30px;
+}
+
+#spin {
+	background-color: #0aa6ab;
+	/*border: 0px;
+	border-color: white;*/
+	margin: 2px;
+	color: white;
+}
+
+#balance {
+	color: green;
+}
+
