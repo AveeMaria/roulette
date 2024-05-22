@@ -6,12 +6,21 @@ let passe = false, manque = false;
 let pair = false, impair = false;
 let R1 = false, R2 = false, R3 = false;
 
+//za bettat stevilke
+let Numbers = new Array(37);
+Numbers.fill(false);
+//console.log(Numbers);
+
 //vse rdece stevilke
 const redNumbers = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
 
 //vse crne stevilke
 const blackNumbers = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35];
 
+//put true on a number u bet on
+function SelectNumber(num) {
+	Numbers[num] = !Numbers[num];
+}
 
 
 //resetta vse stave pred novim spinom
@@ -19,6 +28,11 @@ function ResetAllBets() {
 	rouge = false, noir = false;
 	passe = false, manque = false;
 	pair = false, impair = false;
+}
+
+
+function createBooleanArray(length) {
+	return new Array(length).fill(false);
 }
 
 
@@ -195,3 +209,4 @@ function ColorSelected(p1, p2) {
 		button.style.borderColor = '#777777';
 	}
 }
+

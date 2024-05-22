@@ -1,1 +1,3 @@
-# roulette
+# Making European Roultte
+
+for fun
