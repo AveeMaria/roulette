@@ -8,16 +8,14 @@
 	<link type="text/css" rel="stylesheet" href="style.css">
 	<script src="code.js" defer></script>
 </head>
-<header onload="showBalance()">
-	<h1>Naslovcek</h1>
-</header>
+
 <body onload="showBalance(); showCurrNum(CurrNum);">
+	<header onload="showBalance()">
+		<h1>Naslovcek</h1>
+	</header>
+	
 	<h3>Your balance: <b id="balance"></b></h3>
-
-
-
 	<p id="rouletteResult"></p>
-
 
 	<!--USE STEVILKE-->
 	<!-- Top Row -->
@@ -79,42 +77,39 @@
 	<!-- Bottom Row -->
 	<!--USE STEVILKE-->
 
-
+	<!-- Dozen bets -->
 	<button onclick="D1=!D1;getBool(D1);ColorSelected('D1',D1);" class="bets" id="D1">1st dozen</button>
 	<button onclick="D2=!D2;getBool(D2);ColorSelected('D2',D2);" class="bets" id="D2">2nd dozen</button>
 	<button onclick="D3=!D3;getBool(D3);ColorSelected('D3',D3);" class="bets" id="D3">3rd dozen</button>
 	<br>
-
+	<!-- other bets -->
 	<button onclick="manque=!manque;getBool(manque);ColorSelected('MANQUE',manque);" class="bets" id="MANQUE">MANQUE</button>
 	<button onclick="pair=!pair;getBool(pair);ColorSelected('PAIR',pair);" class="bets" id="PAIR">PAIR</button>
 	<button onclick="rouge=!rouge;getBool(rouge);ColorSelected('ROUGE',rouge);" class="bets" id="ROUGE">ROUGE</button>
 	<button onclick="noir=!noir;getBool(noir);ColorSelected('NOIR',noir);" class="bets" id="NOIR">NOIR</button>
 	<button onclick="impair=!impair;getBool(impair);ColorSelected('IMPAIR',impair);" class="bets" id="IMPAIR">IMPAIR</button>
 	<button onclick="passe=!passe;getBool(passe);ColorSelected('PASSE',passe);" class="bets" id="PASSE">PASSE</button>
-
-
 	<br>
+
 	<p id="bool"></p>
 
-	
+    <footer>
 
-
-
-</body>
-<footer>
-	
-	<button id="spin"
-			onclick="
+        <button id="spin"
+                onclick="
 /*ResetAllBets();*/
 currNum=getRouletteSpin();
 showCurrNum(currNum);
 balance+=CalcutateWins(currNum);
 showBalance();
-/*getBool(impair);*/
 ">
-		Spin!
-	</button>
+            Spin!
+        </button>
 
-	<p id="money_won"></p>
-</footer>
+        <p id="money_won"></p>
+    </footer>
+
+
+</body>
+
 </html>

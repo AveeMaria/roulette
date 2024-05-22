@@ -1,4 +1,3 @@
-
 let CurrNum = -1; let balance = 1000; let bet = 100;
 
 let rouge = false, noir = false;
@@ -23,14 +22,14 @@ function SelectNumber(num) {
 	return Numbers[num] = !Numbers[num];
 }
 
-
 //resetta vse stave pred novim spinom
 function ResetAllBets() {
-	let rouge = false, noir = false;
-	let passe = false, manque = false;
-	let pair = false, impair = false;
-	let R1 = false, R2 = false, R3 = false;
-	let D1 = false, D2 = false, D3 = false;
+	rouge = false, noir = false;
+	passe = false, manque = false;
+	pair = false, impair = false;
+	R1 = false, R2 = false, R3 = false;
+	D1 = false, D2 = false, D3 = false;
+	Numbers.fill(false);
 }
 /*
 function createBooleanArray(length) {
@@ -53,8 +52,7 @@ function getBool(num) {
 	document.getElementById("bool").innerHTML = "Bool value: " + num;
 }
 
-//k zaspina rab tud odstet in pristet 
-//kar si zgubu=more ugotovit as kj dubu alne
+//zracuna loss/win
 function CalcutateWins(num) {
 	let win = 0;
 
@@ -298,18 +296,14 @@ function getRouletteSpin() {
 	return Math.floor(Math.random() * 37);
 }
 
-// ///////////////////
-
-//spremeni barvo gumba, num je ime p2 je bool
-function ColorSelected(num, p2) {
+//spremeni barvo gumba. num je ime, state je bool
+function ColorSelected(num, state) {
 	const button = document.getElementById(num);
 
-	if (p2) {
-		//button.style.backgroundColor = '#4caf50';
+	if (state) {
 		button.style.borderColor = '#ffffff';
 	}
 	else {
-		//button.style.backgroundColor = '#ff4c4c';
 		button.style.borderColor = '#777777';
 	}
 }
