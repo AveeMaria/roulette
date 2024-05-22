@@ -5,6 +5,7 @@ let rouge = false, noir = false;
 let passe = false, manque = false;
 let pair = false, impair = false;
 let R1 = false, R2 = false, R3 = false;
+let D1 = false, D2 = false, D3 = false;
 
 //za bettat stevilke
 let Numbers = new Array(37);
@@ -19,26 +20,27 @@ const blackNumbers = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31
 
 //put true on a number u bet on
 function SelectNumber(num) {
-	Numbers[num] = !Numbers[num];
+	return Numbers[num] = !Numbers[num];
 }
 
 
 //resetta vse stave pred novim spinom
 function ResetAllBets() {
-	rouge = false, noir = false;
-	passe = false, manque = false;
-	pair = false, impair = false;
+	let rouge = false, noir = false;
+	let passe = false, manque = false;
+	let pair = false, impair = false;
+	let R1 = false, R2 = false, R3 = false;
+	let D1 = false, D2 = false, D3 = false;
 }
-
-
+/*
 function createBooleanArray(length) {
 	return new Array(length).fill(false);
-}
+}*/
 
 
 //pokaze trenutno karto al neki
-function showCurrNum(p1) {
-	document.getElementById("rouletteResult").innerHTML = "Ball hit: " + p1;
+function showCurrNum(num) {
+	document.getElementById("rouletteResult").innerHTML = "Ball hit: " + num;
 }
 
 //pokaze kok zelencev mas
@@ -47,96 +49,183 @@ function showBalance() {
 }
 
 //za debuggat da vidm bool kje je pa kok je
-function getBool(p1) {
-	document.getElementById("bool").innerHTML = "Bool value: " + p1;
+function getBool(num) {
+	document.getElementById("bool").innerHTML = "Bool value: " + num;
 }
 
 //k zaspina rab tud odstet in pristet 
 //kar si zgubu=more ugotovit as kj dubu alne
-function CalcutateWins(p1) {
+function CalcutateWins(num) {
 	let win = 0;
-	if (p1 == 0) {
-		win -= bet;//se mi zdi da zgubis ce pair pa 0
-	}
-	else if (p1 % 2 == 0) {
-		//je even
-		if (pair == true) {
-			win += bet;
-		}
-		if (impair == true) {
-			win -= bet;
-		}
-	}
-	else {
-		//je odd
-		if (impair == true) {
-			win += bet;
-		}
-		//ce zgubis
-		if (pair == true) {
-			win -= bet;
-		}
-	}
 
+	//preverja rdece/crne stevilke
+	win += CheckRedBlack(num);
 
-	//skalkulira passe/manque
+	// odd/even check
+	win += CheckOddEven(num);
 
+	//check passe/manque
+	win += CheckPasseManque(num);
+	
+	//dozens check
+	win += CheckDozenBets(num);
+
+	// pristeje/odsteje glede na rowse
+	win += CheckRowBets(num);
+
+	// pristeje/odsteje glede na posamezne st
+	win += CheckNumberBets(num);
+
+	//izpise na kok si dubu/zgubu
+	document.getElementById("money_won").innerHTML = "Money earned: " + win;
+	return win;
+}
+
+function CheckPasseManque(num) {
+	let win = 0;
 	//manque
-	if (p1 > 0 && p1 <= 18) {
-		if (manque == true) {
+	if (num > 0 && num <= 18) {
+		if (manque) {
 			win += bet;
 		}
 
-		if (passe == true) {
+		if (passe) {
 			win -= bet;
 		}
 	}
 	//passe
-	else if (p1 > 18) {
-		if (passe == true) {
+	else if (num > 18) {
+		if (passe) {
 			win += bet;
 		}
 
-		if (manque == true) {
+		if (manque) {
 			win -= bet;
 		}
 	}
 	//ce pade nicla
 	else {
-		if (passe || manque) {
+		if (passe) {
+			win -= bet;
+		}
+		if (manque) {
 			win -= bet;
 		}
 	}
 
+	return win;
+}
+function CheckRedBlack(num) {
+	let win = 0;
 
-	//DELA!!!
-	//preverja rdece/crne stevilke
-	if (redNumbers.includes(p1)) {
-		if (rouge == true) {
+	if (redNumbers.includes(num)) {
+		if (rouge) {
 			win += bet;
 		}
-		if (noir == true) {
+		if (noir) {
 			win -= bet;
 		}
-	} else if (blackNumbers.includes(p1)) {
-		if (noir == true) {
+	} else if (blackNumbers.includes(num)) {
+		if (noir) {
 			win += bet;
 		}
-		if (rouge == true) {
+		if (rouge) {
 			win -= bet;
 		}
 	} else {
-		//nicla padla
-		if (rouge == true) {
+		//nicla pade
+		if (rouge) {
 			win -= bet;
 		}
-		if (noir == true) {
+		if (noir) {
 			win -= bet;
 		}
 	}
 
-	//preverja rowse
-	if (p1 % 3 == 0) {
+	return win;
+}
+function CheckOddEven(num) {
+	let win = 0;
+	if (num == 0) {
+		win -= bet;//se mi zdi da zgubis ce mas pair pa je 0
+	}
+	else if (num % 2 == 0) {
+		//je even
+		if (pair) {
+			win += bet;
+		}
+		if (impair) {
+			win -= bet;
+		}
+	}
+	else {
+		//je odd
+		if (impair) {
+			win += bet;
+		}
+		if (pair) {
+			win -= bet;
+		}
+	}
+
+	return win;
+}
+function CheckDozenBets(num) {
+	let win = 0;
+	if (num >= 1 && num <= 12) {
+		//D1
+		if (D1) {
+			win += 2 * bet;
+		}
+		if (D2) {
+			win -= bet;
+		}
+		if (D3) {
+			win -= bet;
+		}
+	}
+	else if (num >= 13 && num <= 24) {
+		//D2
+		if (D1) {
+			win -= bet;
+		}
+		if (D2) {
+			win += 2 * bet;
+		}
+		if (D3) {
+			win -= bet;
+		}
+	}
+	else if (num >= 25 && num <= 36) {
+		//D3
+		if (D1) {
+			win -= bet;
+		}
+		if (D2) {
+			win -= bet;
+		}
+		if (D3) {
+			win += 2 * bet;
+		}
+	}
+	else {
+		//0
+		if (D1) {
+			win -= bet;
+		}
+		if (D2) {
+			win -= bet;
+		}
+		if (D3) {
+			win -= bet;
+		}
+	}
+	return win;
+}
+function CheckRowBets(num) {
+	let win = 0;
+
+	if (num % 3 == 0) {
 		//R1
 		if (R1) {
 			win += 2 * bet;
@@ -148,7 +237,7 @@ function CalcutateWins(p1) {
 			win -= bet;
 		}
 	}
-	else if ((p1 + 1) % 3 == 0) {
+	else if ((num + 1) % 3 == 0) {
 		//R2
 		if (R1) {
 			win -= bet;
@@ -160,7 +249,7 @@ function CalcutateWins(p1) {
 			win -= bet;
 		}
 	}
-	else if ((p1 + 2) % 3 == 0) {
+	else if ((num + 2) % 3 == 0) {
 		//R3
 		if (R1) {
 			win -= bet;
@@ -183,9 +272,24 @@ function CalcutateWins(p1) {
 			win -= bet;
 		}
 	}
+	return win;
+}
+function CheckNumberBets(num) {
+	let win = 0;
 
-	//izpise na kok si dubu/zgubu
-	document.getElementById("money_won").innerHTML = "Money earned: " + win;
+	for (let i = 0; i < Numbers.length; i++) {
+
+		//prever use bette
+		if (Numbers[i]) {
+			//ce zadanes number
+			if (i == num) {
+				win += 35 * bet;
+			}
+			else {
+				win -= bet;
+			}
+		}
+	}
 	return win;
 }
 
@@ -196,9 +300,9 @@ function getRouletteSpin() {
 
 // ///////////////////
 
-//spremeni barvo gumba, p1 je ime p2 je bool
-function ColorSelected(p1, p2) {
-	const button = document.getElementById(p1);
+//spremeni barvo gumba, num je ime p2 je bool
+function ColorSelected(num, p2) {
+	const button = document.getElementById(num);
 
 	if (p2) {
 		//button.style.backgroundColor = '#4caf50';
@@ -209,4 +313,3 @@ function ColorSelected(p1, p2) {
 		button.style.borderColor = '#777777';
 	}
 }
-

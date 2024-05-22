@@ -11,106 +11,110 @@
 <header onload="showBalance()">
 	<h1>Naslovcek</h1>
 </header>
-<body onload="showBalance()">
+<body onload="showBalance(); showCurrNum(CurrNum);">
+	<h3>Your balance: <b id="balance"></b></h3>
 
-<h3 ">Your balance: <b id = "balance"></b></h3>
 
-<button id="spin" 
-onclick="
+
+	<p id="rouletteResult"></p>
+
+
+	<!--USE STEVILKE-->
+	<!-- Top Row -->
+	<button id="num3" onclick="SelectNumber(3);getBool(Numbers[3]);ColorSelected('num3',Numbers[3]);" class="red">3</button>
+	<button id="num6" onclick="SelectNumber(6);getBool(Numbers[6]);ColorSelected('num6',Numbers[6]);" class="black">6</button>
+	<button id="num9" onclick="SelectNumber(9);getBool(Numbers[9]);ColorSelected('num9',Numbers[9]);" class="red">9</button>
+	<button id="num12" onclick="SelectNumber(12);getBool(Numbers[12]);ColorSelected('num12',Numbers[12]);" class="red">12</button>
+
+	<button id="num15" onclick="SelectNumber(15);getBool(Numbers[15]);ColorSelected('num15',Numbers[15]);" class="black">15</button>
+	<button id="num18" onclick="SelectNumber(18);getBool(Numbers[18]);ColorSelected('num18',Numbers[18]);" class="red">18</button>
+	<button id="num21" onclick="SelectNumber(21);getBool(Numbers[21]);ColorSelected('num21',Numbers[21]);" class="red">21</button>
+	<button id="num24" onclick="SelectNumber(24);getBool(Numbers[24]);ColorSelected('num24',Numbers[24]);" class="black">24</button>
+
+	<button id="num27" onclick="SelectNumber(27);getBool(Numbers[27]);ColorSelected('num27',Numbers[27]);" class="red">27</button>
+	<button id="num30" onclick="SelectNumber(30);getBool(Numbers[30]);ColorSelected('num30',Numbers[30]);" class="red">30</button>
+	<button id="num33" onclick="SelectNumber(33);getBool(Numbers[33]);ColorSelected('num33',Numbers[33]);" class="black">33</button>
+	<button id="num36" onclick="SelectNumber(36);getBool(Numbers[36]);ColorSelected('num36',Numbers[36]);" class="red">36</button>
+
+	<button onclick="R1=!R1;getBool(R1);ColorSelected('row1',R1);" class="bets" id="row1">R1</button>
+	<br>
+	<!-- Top Row -->
+	<!-- Mid Row -->
+	<button id="num2" onclick="SelectNumber(2);getBool(Numbers[2]);ColorSelected('num2',Numbers[2]);" class="black">2</button>
+	<button id="num5" onclick="SelectNumber(5);getBool(Numbers[5]);ColorSelected('num5',Numbers[5]);" class="red">5</button>
+	<button id="num8" onclick="SelectNumber(8);getBool(Numbers[8]);ColorSelected('num8',Numbers[8]);" class="black">8</button>
+	<button id="num11" onclick="SelectNumber(11);getBool(Numbers[11]);ColorSelected('num11',Numbers[11]);" class="black">11</button>
+
+	<button id="num14" onclick="SelectNumber(14);getBool(Numbers[14]);ColorSelected('num14',Numbers[14]);" class="red">14</button>
+	<button id="num17" onclick="SelectNumber(17);getBool(Numbers[17]);ColorSelected('num17',Numbers[17]);" class="black">17</button>
+	<button id="num20" onclick="SelectNumber(20);getBool(Numbers[20]);ColorSelected('num20',Numbers[20]);" class="black">20</button>
+	<button id="num23" onclick="SelectNumber(23);getBool(Numbers[23]);ColorSelected('num23',Numbers[23]);" class="red">23</button>
+
+	<button id="num26" onclick="SelectNumber(26);getBool(Numbers[26]);ColorSelected('num26',Numbers[26]);" class="black">26</button>
+	<button id="num29" onclick="SelectNumber(29);getBool(Numbers[29]);ColorSelected('num29',Numbers[29]);" class="black">29</button>
+	<button id="num32" onclick="SelectNumber(32);getBool(Numbers[32]);ColorSelected('num32',Numbers[32]);" class="red">32</button>
+	<button id="num35" onclick="SelectNumber(35);getBool(Numbers[35]);ColorSelected('num35',Numbers[35]);" class="black">35</button>
+
+	<button onclick="R2=!R2;getBool(R2);ColorSelected('row2',R2);" class="bets" id="row2">R2</button>
+	<br>
+	<!-- Mid Row -->
+	<!-- Bottom Row -->
+	<button id="num1" onclick="SelectNumber(1);getBool(Numbers[1]);ColorSelected('num1',Numbers[1]);" class="red">1</button>
+	<button id="num4" onclick="SelectNumber(4);getBool(Numbers[4]);ColorSelected('num4',Numbers[4]);" class="black">4</button>
+	<button id="num7" onclick="SelectNumber(7);getBool(Numbers[7]);ColorSelected('num7',Numbers[7]);" class="red">7</button>
+	<button id="num10" onclick="SelectNumber(10);getBool(Numbers[10]);ColorSelected('num10',Numbers[10]);" class="black">10</button>
+
+	<button id="num13" onclick="SelectNumber(13);getBool(Numbers[13]);ColorSelected('num13',Numbers[13]);" class="black">13</button>
+	<button id="num16" onclick="SelectNumber(16);getBool(Numbers[16]);ColorSelected('num16',Numbers[16]);" class="red">16</button>
+	<button id="num19" onclick="SelectNumber(19);getBool(Numbers[19]);ColorSelected('num19',Numbers[19]);" class="red">19</button>
+	<button id="num22" onclick="SelectNumber(22);getBool(Numbers[22]);ColorSelected('num22',Numbers[22]);" class="black">22</button>
+
+	<button id="num25" onclick="SelectNumber(25);getBool(Numbers[25]);ColorSelected('num25',Numbers[25]);" class="red">25</button>
+	<button id="num28" onclick="SelectNumber(28);getBool(Numbers[28]);ColorSelected('num28',Numbers[28]);" class="black">28</button>
+	<button id="num31" onclick="SelectNumber(31);getBool(Numbers[31]);ColorSelected('num31',Numbers[31]);" class="black">31</button>
+	<button id="num34" onclick="SelectNumber(34);getBool(Numbers[34]);ColorSelected('num34',Numbers[34]);" class="red">34</button>
+
+	<button onclick="R3=!R3;getBool(R3);ColorSelected('row3',R3);" class="bets" id="row3">R3</button>
+	<br>
+	<!-- Bottom Row -->
+	<!--USE STEVILKE-->
+
+
+	<button onclick="D1=!D1;getBool(D1);ColorSelected('D1',D1);" class="bets" id="D1">1st dozen</button>
+	<button onclick="D2=!D2;getBool(D2);ColorSelected('D2',D2);" class="bets" id="D2">2nd dozen</button>
+	<button onclick="D3=!D3;getBool(D3);ColorSelected('D3',D3);" class="bets" id="D3">3rd dozen</button>
+	<br>
+
+	<button onclick="manque=!manque;getBool(manque);ColorSelected('MANQUE',manque);" class="bets" id="MANQUE">MANQUE</button>
+	<button onclick="pair=!pair;getBool(pair);ColorSelected('PAIR',pair);" class="bets" id="PAIR">PAIR</button>
+	<button onclick="rouge=!rouge;getBool(rouge);ColorSelected('ROUGE',rouge);" class="bets" id="ROUGE">ROUGE</button>
+	<button onclick="noir=!noir;getBool(noir);ColorSelected('NOIR',noir);" class="bets" id="NOIR">NOIR</button>
+	<button onclick="impair=!impair;getBool(impair);ColorSelected('IMPAIR',impair);" class="bets" id="IMPAIR">IMPAIR</button>
+	<button onclick="passe=!passe;getBool(passe);ColorSelected('PASSE',passe);" class="bets" id="PASSE">PASSE</button>
+
+
+	<br>
+	<p id="bool"></p>
+
+	
+
+
+
+</body>
+<footer>
+	
+	<button id="spin"
+			onclick="
 /*ResetAllBets();*/
 currNum=getRouletteSpin();
 showCurrNum(currNum);
 balance+=CalcutateWins(currNum);
 showBalance();
 /*getBool(impair);*/
-">Spin!</button>
+">
+		Spin!
+	</button>
 
-<p id="rouletteResult"></p>
-
-
-<!--USE STEVILKE-->
-<!--top row-->
-
-<button id="num3" onclick="SelectNumber(3);getBool(Numbers[3]);ColorSelected('num3',Numbers[3]);" class="red">3</button>
-<button id="num6" onclick="SelectNumber(6);getBool(Numbers[6]);ColorSelected('num6',Numbers[6]);" class="black">6</button>
-<button id="num9" onclick="SelectNumber(9);getBool(Numbers[9]);ColorSelected('num9',Numbers[9]);" class="red">9</button>
-<button id="num12" onclick="SelectNumber(12);getBool(Numbers[12]);ColorSelected('num12',Numbers[12]);" class="red">12</button>
-
-<button id="num15" onclick="SelectNumber(15);getBool(Numbers[15]);ColorSelected('num15',Numbers[15]);" class="black">15</button>
-<button id="num18" onclick="SelectNumber(18);getBool(Numbers[18]);ColorSelected('num18',Numbers[18]);" class="red">18</button>
-<button id="num21" onclick="SelectNumber(21);getBool(Numbers[21]);ColorSelected('num21',Numbers[21]);" class="red">21</button>
-<button id="num24" onclick="SelectNumber(24);getBool(Numbers[24]);ColorSelected('num24',Numbers[24]);" class="black">24</button>
-
-<button class="red">27</button>
-<button class="red">30</button>
-<button class="black">33</button>
-<button class="red">36</button>
-
-<button onclick="R1=!R1;getBool(R1);ColorSelected('row1',R1);"class="bets" id="row1">R1</button>
-<br>
-<!--top row-->
-
-<!--mid row-->
-<button class="black">2</button>
-<button class="red">5</button>
-<button class="black">8</button>
-<button class="black">11</button>
-
-<button class="red">14</button>
-<button class="black">17</button>
-<button class="black">20</button>
-<button class="red">23</button>
-
-<button class="black">26</button>
-<button class="black">29</button>
-<button class="red">32</button>
-<button class="black">35</button>
-
-<button onclick="R2=!R2;getBool(R2);ColorSelected('row2',R2);"class="bets" id="row2">R2</button>
-<br>
-<!--mid row-->
-
-<!--bottom row-->
-<button class="red">1</button>
-<button class="black">4</button>
-<button class="red">7</button>
-<button class="black">10</button>
-
-<button class="black">13</button>
-<button class="red">16</button>
-<button class="red">19</button>
-<button class="black">22</button>
-
-<button class="red">25</button>
-<button class="black">28</button>
-<button class="black">31</button>
-<button class="red">34</button>
-
-<button onclick="R3=!R3;getBool(R3);ColorSelected('row3',R3);"class="bets" id="row3">R3</button>
-<br>
-<!--bottom row-->
-<!--USE STEVILKE-->
-
-
-<button class="bets" id="D1">1st dozen</button>
-<button class="bets" id="D1">2nd dozen</button>
-<button class="bets" id="D1">3rd dozen</button>
-<br>
-
-<button onclick="manque=!manque;getBool(manque);ColorSelected('MANQUE',manque);" class="bets" id="MANQUE">MANQUE</button>
-<button onclick="pair=!pair;getBool(pair);ColorSelected('PAIR',pair);" class="bets" id="PAIR">PAIR</button>
-<button onclick="rouge=!rouge;getBool(rouge);ColorSelected('ROUGE',rouge);" class="bets" id="ROUGE">ROUGE</button>
-<button onclick="noir=!noir;getBool(noir);ColorSelected('NOIR',noir);" class="bets" id="NOIR">NOIR</button>
-<button onclick="impair=!impair;getBool(impair);ColorSelected('IMPAIR',impair);" class="bets" id="IMPAIR">IMPAIR</button>
-<button onclick="passe=!passe;getBool(passe);ColorSelected('PASSE',passe);" class="bets" id="PASSE">PASSE</button>
-
-
-<br>
-<p id="bool"></p>
-
-<p id="money_won"></p>
-
-
-
-</body>
+	<p id="money_won"></p>
+</footer>
 </html>

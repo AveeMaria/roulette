@@ -79,7 +79,9 @@ button {
 #spin {
 	background-color: #0aa6ab;
 	/*border: 0px;
-	border-color: white;*/
+	border-color: white;
+	width: 120px;
+	height: 50px;*/
 	margin: 2px;
 	color: white;
 }
@@ -88,3 +90,7 @@ button {
 	color: green;
 }
 
+
+footer {
+	text-align: left;
+}
